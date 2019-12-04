@@ -1,0 +1,7 @@
+main: at.austerzockt.simpletowny.classes.Towny
+version: '0.1'
+name: simpletowny
+author: Austerzockt
+database: true
+prefix: TOWNY
+commands:
