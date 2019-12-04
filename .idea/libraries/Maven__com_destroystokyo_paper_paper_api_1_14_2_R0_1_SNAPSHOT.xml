@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/destroystokyo/paper/paper-api/1.14.2-R0.1-SNAPSHOT/paper-api-1.14.2-R0.1-20190624.023529-54-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/destroystokyo/paper/paper-api/1.14.2-R0.1-SNAPSHOT/paper-api-1.14.2-R0.1-20190624.023529-54.jar!/" />
     </SOURCES>
   </library>
 </component>
