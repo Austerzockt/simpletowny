@@ -25,7 +25,7 @@ public abstract class TownyCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
-        if (commandName.equalsIgnoreCase(commandName)) {
+        if (cmd.getName().equalsIgnoreCase(this.commandName)) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (p.hasPermission(permission)) {
