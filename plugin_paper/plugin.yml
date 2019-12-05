@@ -5,3 +5,4 @@ author: Austerzockt
 database: true
 prefix: TOWNY
 commands:
+  test:

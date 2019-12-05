@@ -1,4 +1,4 @@
-package at.austerzockt.simpletowny.classes.command.commands;
+package at.austerzockt.simpletowny.classes.command;
 
 import at.austerzockt.simpletowny.classes.Towny;
 import org.bukkit.ChatColor;
@@ -7,18 +7,17 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.Objects;
-
-
 
 public abstract class TownyCommand implements CommandExecutor {
     private final String commandName;
     private final String permission;
+    private final boolean op;
 
-    protected TownyCommand(String commandname, String permission) {
+    protected TownyCommand(String commandname, String permission, boolean op) {
         this.commandName = commandname;
         this.permission = "Server." + permission;
-        Objects.requireNonNull(Towny.INSTANCE.getCommand(commandname)).setExecutor(this);
+        this.op = op;
+        Towny.INSTANCE.getCommand(commandname).setExecutor(this);
 
 
     }
@@ -31,6 +30,9 @@ public abstract class TownyCommand implements CommandExecutor {
                 if (p.hasPermission(permission)) {
 
                     execute(sender, args, p);  //Execute the command
+
+                } else if (op && p.isOp()) {
+                    execute(sender, args, p);
 
                 } else {
                     sender.sendMessage(ChatColor.RED + "No permission!");
