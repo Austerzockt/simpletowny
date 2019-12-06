@@ -1,14 +1,12 @@
 package at.austerzockt.simpletowny.classes.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DatabaseManager {
-    private static Connection connection;
-    private static String databasehost, databasename, databaseuser, databasepw;
-    private static int databaseport;
+    private  Connection connection;
+    private  String databasehost, databasename, databaseuser, databasepw;
+    private  int databaseport;
+    private Statement statement;
     public DatabaseManager() {
         databasehost = "127.0.0.1";
         databasename = "towny";
@@ -21,7 +19,7 @@ public class DatabaseManager {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://" + databasehost + ":" + databaseport + "/" + databasename, databaseuser, databasepw);
             connection.setAutoCommit(true);
-
+            statement = connection.createStatement();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -34,8 +32,24 @@ public class DatabaseManager {
             throw new RuntimeException("Well SQL is annoying :p");
         }
     }
+    public void executeUpdate(String sql) {
+        try {
+            statement.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Well SQL is annoying :p");
+        }
+    }
+    public ResultSet executeQuery(String sql) {
+        try {
+            return statement.executeQuery(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Well SQL is annoying :p");
+        }
+    }
     //GETTERS
-    //TODO: maybe Setters?
     public Connection getConnection() {
 
         return connection;
