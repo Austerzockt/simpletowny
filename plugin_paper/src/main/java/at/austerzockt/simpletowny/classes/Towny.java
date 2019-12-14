@@ -2,6 +2,7 @@ package at.austerzockt.simpletowny.classes;
 
 import at.austerzockt.simpletowny.classes.command.Commands;
 import at.austerzockt.simpletowny.classes.database.DatabaseManager;
+import at.austerzockt.simpletowny.classes.utils.town.TownListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
@@ -16,6 +17,7 @@ public class Towny extends JavaPlugin {
         INSTANCE = this;
         databaseManager = new DatabaseManager();
         commands = new Commands();
+        getServer().getPluginManager().registerEvents(new TownListener(), this);
 
     }
 

@@ -3,6 +3,7 @@ package at.austerzockt.simpletowny.classes.database;
 import java.sql.*;
 
 public class DatabaseManager {
+    private String errormessage = "SQLException";
     private  Connection connection;
     private  String databasehost, databasename, databaseuser, databasepw;
     private  int databaseport;
@@ -16,6 +17,7 @@ public class DatabaseManager {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            
             connection = DriverManager.getConnection(
                     "jdbc:mysql://" + databasehost + ":" + databaseport + "/" + databasename, databaseuser, databasepw);
             connection.setAutoCommit(true);
@@ -29,7 +31,7 @@ public class DatabaseManager {
             return connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("Well SQL is annoying :p");
+            throw new RuntimeException(errormessage);
         }
     }
     public void executeUpdate(String sql) {
@@ -38,7 +40,7 @@ public class DatabaseManager {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("Well SQL is annoying :p");
+            throw new RuntimeException(errormessage);
         }
     }
     public ResultSet executeQuery(String sql) {
@@ -46,7 +48,7 @@ public class DatabaseManager {
             return statement.executeQuery(sql);
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("Well SQL is annoying :p");
+            throw new RuntimeException(errormessage);
         }
     }
     //GETTERS
