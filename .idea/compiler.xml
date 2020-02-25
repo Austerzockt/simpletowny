@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="plugin_paper" />
+        <module name="plugin_bungeecord" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="plugin_bungeecord" target="1.8" />
       <module name="plugin_paper" target="1.8" />
     </bytecodeTargetLevel>
   </component>

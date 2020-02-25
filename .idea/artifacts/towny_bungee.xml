@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="towny_bungee">
+    <output-path>$USER_HOME$/Servers/Waterfall/plugins</output-path>
+    <root id="archive" name="towny_bungee.jar">
+      <element id="module-output" name="plugin_bungeecord" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin_bungeecord/bungee.yml" />
+    </root>
+  </artifact>
+</component>
