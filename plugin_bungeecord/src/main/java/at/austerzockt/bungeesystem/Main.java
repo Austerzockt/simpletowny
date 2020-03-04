@@ -6,6 +6,7 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
 public class Main extends net.md_5.bungee.api.plugin.Plugin implements Listener {
+
     @Override
     public void onEnable() {
         this.getProxy().broadcast(new TextComponent("lol"));

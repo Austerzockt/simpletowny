@@ -1,9 +1,12 @@
 package at.austerzockt.simpletowny.classes.command.commands;
 
+import at.austerzockt.simpletowny.classes.Towny;
 import at.austerzockt.simpletowny.classes.command.TownyCommand;
-import at.austerzockt.simpletowny.classes.utils.town.Town;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class TestCommand extends TownyCommand {
 
@@ -15,10 +18,18 @@ public class TestCommand extends TownyCommand {
     public void execute(CommandSender sender, String[] args, Player p) {
         int x = 0;
         if (args.length == 1) {
-        Town town = Town.createTown(p);
-
-
         }
+        Towny.getDatabaseAccess().executeUpdate("INSERT into table1(x) values('x')");
+        try {
+            ResultSet rs = Towny.getDatabaseAccess().executeQuery("SELECT * FROM table1 WHERE x = 'x'");
+            while (rs.next()) {
+                p.sendMessage(rs.getString("x"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 

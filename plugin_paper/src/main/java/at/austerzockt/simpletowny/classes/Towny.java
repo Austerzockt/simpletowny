@@ -19,6 +19,7 @@ public class Towny extends JavaPlugin {
         commands = new Commands();
         getServer().getPluginManager().registerEvents(new TownListener(), this);
 
+
     }
 
     @Override

@@ -11,18 +11,17 @@ public class DatabaseManager {
     public DatabaseManager() {
         databasehost = "127.0.0.1";
         databasename = "towny";
-        databaseuser = "root";
-        databasepw = "";
+        databaseuser = "query";
+        databasepw = "yM4f00Kr7JIV";
         databaseport = 3306;
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            
+
             connection = DriverManager.getConnection(
                     "jdbc:mysql://" + databasehost + ":" + databaseport + "/" + databasename, databaseuser, databasepw);
             connection.setAutoCommit(true);
             statement = connection.createStatement();
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
