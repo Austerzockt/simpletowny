@@ -19,11 +19,11 @@ public class TestCommand extends TownyCommand {
         int x = 0;
         if (args.length == 1) {
         }
-        Towny.getDatabaseAccess().executeUpdate("INSERT into table1(x) values('x')");
+        Towny.getDatabaseAccess().executeUpdate("INSERT into table1(chara) values('x')");
         try {
-            ResultSet rs = Towny.getDatabaseAccess().executeQuery("SELECT * FROM table1 WHERE x = 'x'");
+            ResultSet rs = Towny.getDatabaseAccess().executeQuery("SELECT * FROM table1 WHERE chara = 'x'");
             while (rs.next()) {
-                p.sendMessage(rs.getString("x"));
+                p.sendMessage(rs.getString("chara"));
             }
 
         } catch (SQLException e) {

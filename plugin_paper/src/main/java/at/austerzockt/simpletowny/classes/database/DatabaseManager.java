@@ -4,15 +4,17 @@ import java.sql.*;
 
 public class DatabaseManager {
     private String errormessage = "SQLException";
-    private  Connection connection;
-    private  String databasehost, databasename, databaseuser, databasepw;
-    private  int databaseport;
+    private Connection connection;
+    private  final String databasehost, databasename, databaseuser, databasepw;
+    private final int databaseport;
     private Statement statement;
+    private DatabaseCreator databaseCreator;
     public DatabaseManager() {
+        Connection connection1;
         databasehost = "127.0.0.1";
         databasename = "towny";
-        databaseuser = "query";
-        databasepw = "yM4f00Kr7JIV";
+        databaseuser = "root";
+        databasepw = "";
         databaseport = 3306;
 
         try {
@@ -21,9 +23,14 @@ public class DatabaseManager {
                     "jdbc:mysql://" + databasehost + ":" + databaseport + "/" + databasename, databaseuser, databasepw);
             connection.setAutoCommit(true);
             statement = connection.createStatement();
+            databaseCreator = new DatabaseCreatorImpl(connection);
+            databaseCreator.create();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+
+
     }
     public Statement createStatement()  {
         try {
@@ -35,6 +42,7 @@ public class DatabaseManager {
     }
     public void executeUpdate(String sql) {
         try {
+            assert statement != null;
             statement.executeUpdate(sql);
 
         } catch (SQLException e) {
@@ -72,6 +80,10 @@ public class DatabaseManager {
         return databasehost;
     }
 
+public interface DatabaseCreator {
+        public void create() throws SQLException;
 
+
+}
 
 }
