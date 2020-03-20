@@ -4,7 +4,12 @@ name: simpletowny
 author: Austerzockt
 database: true
 prefix: TOWNY
-api-version: 1.15
+depend:
+  - LuckPerms
+api-version: '1.15'
 commands:
   test:
   unlive:
+  gamemode:
+    aliases:
+      - gm

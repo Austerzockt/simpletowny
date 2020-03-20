@@ -3,6 +3,7 @@ package at.austerzockt.simpletowny.classes.command.commands;
 import at.austerzockt.simpletowny.classes.Towny;
 import at.austerzockt.simpletowny.classes.command.TownyCommand;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.sql.ResultSet;
@@ -10,8 +11,8 @@ import java.sql.SQLException;
 
 public class TestCommand extends TownyCommand {
 
-    public TestCommand() {
-        super("test", "test", true);
+    public TestCommand(TabCompleter tabCompleter) {
+        super("test", "test", true, tabCompleter);
     }
 
     @Override

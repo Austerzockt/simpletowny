@@ -1,14 +1,15 @@
 package at.austerzockt.simpletowny.classes.command;
 
+import at.austerzockt.simpletowny.classes.command.commands.GameModeCommand;
 import at.austerzockt.simpletowny.classes.command.commands.TestCommand;
 import at.austerzockt.simpletowny.classes.command.commands.UnliveCommand;
-
-import java.util.ArrayList;
+import at.austerzockt.simpletowny.classes.command.tabcompletions.GameModeTab;
 
 public class Commands {
-    private ArrayList<TownyCommand> list = new ArrayList();
     public Commands() {
-        list.add(new TestCommand());
-        list.add(new UnliveCommand());
+        new TestCommand(null);
+        new UnliveCommand(null);
+        new GameModeCommand(new GameModeTab());
+
     }
 }

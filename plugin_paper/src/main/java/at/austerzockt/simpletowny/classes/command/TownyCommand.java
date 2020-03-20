@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 
@@ -13,12 +14,12 @@ public abstract class TownyCommand implements CommandExecutor {
     private final String permission;
     private final boolean op;
 
-    protected TownyCommand(String commandname, String permission, boolean op) {
+    protected TownyCommand(String commandname, String permission, boolean op, TabCompleter tabCompleter) {
         this.commandName = commandname;
         this.permission = "Server." + permission;
         this.op = op;
         Towny.INSTANCE.getCommand(commandname).setExecutor(this);
-
+        if (tabCompleter != null) Towny.INSTANCE.getCommand(commandname).setTabCompleter(tabCompleter);
 
     }
 
@@ -30,10 +31,10 @@ public abstract class TownyCommand implements CommandExecutor {
                 if (p.hasPermission(permission)) {
 
                     execute(sender, args, p);  //Execute the command
-
+                    return true;
                 } else if (op && p.isOp()) {
                     execute(sender, args, p);
-
+                    return true;
                 } else {
                     sender.sendMessage(ChatColor.RED + "No permission!");
 

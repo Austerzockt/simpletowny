@@ -4,11 +4,12 @@ import at.austerzockt.simpletowny.classes.command.TownyCommand;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 public class UnliveCommand extends TownyCommand {
-    public UnliveCommand() {
-        super("unlive", "test", true);
+    public UnliveCommand(TabCompleter tabCompleter) {
+        super("unlive", "test", true, tabCompleter);
     }
 
     @Override
