@@ -13,3 +13,6 @@ commands:
   gamemode:
     aliases:
       - gm
+  town:
+    aliases:
+      - t

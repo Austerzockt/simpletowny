@@ -24,6 +24,8 @@ public class DatabaseCreatorImpl implements DatabaseManager.DatabaseCreator {
         Statement statement = connection.createStatement();
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS table1 (chara varchar(255))");
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS prefixes (name varchar(255), prefix varchar(255), messagecolor varchar(255))");
+        statement.executeUpdate("CREATE TABLE IF NOT EXISTS towns (id int NOT NULL AUTO_INCREMENT , name varchar(255), nation varchar(255), major varchar(255), PRIMARY KEY(id))");
+
 
     }
 }
